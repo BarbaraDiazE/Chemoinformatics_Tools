@@ -41,14 +41,14 @@ def get_mw(mol):
 
 def compute_descriptors(smiles):
     np_smiles = np.array(smiles)
-    smiles = pool.map(get_smiles, [x for x in np_smiles])
+    smiles = list(map(get_smiles, [x for x in np_smiles]))
     np_molecules = np.array(smiles)
-    CanonicalSmiles = pool.map(get_cann_smiles, [mol for mol in np_molecules])
-    HBA = pool.map(get_hba, [mol for mol in np_molecules])
-    HBD = pool.map(get_hbd, [mol for mol in np_molecules])
-    RB = pool.map(get_rb, [mol for mol in np_molecules])
-    LOGP = pool.map(get_logp, [mol for mol in np_molecules])
-    TPSA = pool.map(get_tpsa, [mol for mol in np_molecules])
-    MW = pool.map(get_mw, [mol for mol in np_molecules])
-    
+    CanonicalSmiles = list(map(get_cann_smiles, [mol for mol in np_molecules]))
+    HBA = list(map(get_hba, [mol for mol in np_molecules]))
+    HBD = list(map(get_hbd, [mol for mol in np_molecules]))
+    RB = list(map(get_rb, [mol for mol in np_molecules]))
+    LOGP = list(map(get_logp, [mol for mol in np_molecules]))
+    TPSA = list(map(get_tpsa, [mol for mol in np_molecules]))
+    MW = list(map(get_mw, [mol for mol in np_molecules]))
+
     return CanonicalSmiles, HBA, HBD, RB, LOGP, TPSA, MW
