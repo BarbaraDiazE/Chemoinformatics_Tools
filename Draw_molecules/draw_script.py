@@ -23,3 +23,9 @@ def draw_2_molecules(smiles1, smiles2, legend1, legend2, output_name):
     )
     plot.save(output_name + ".jpg")
     plot.show()
+
+
+def draw_one_single_molecule(smiles, output_name):
+    mol = Chem.MolFromSmiles(smiles)
+    output_name = output_name + ".png"
+    return Draw.MolToImageFile(mol, output_name)
